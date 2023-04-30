@@ -128,8 +128,8 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
         ])
     
     # Read the subprocess's standard error output
-    stderr_data = await process.stderr.read()
-    print(f"Subprocess error output:\n{stderr_data.decode()}")
+    stdout_data = await process.stdout.read()
+    print(f"Subprocess output:\n{stdout_data.decode()}")
     
     if process.returncode == 0:
         await msg.edit('Muxing  Completed Successfully!\n\nTime taken : {} seconds'.format(round(start-time.time())))
