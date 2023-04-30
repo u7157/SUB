@@ -106,7 +106,7 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     
     command = [
 #             'ffmpeg','-hide_banner',
-            '-hwaccel','cuvid',
+            '-hwaccel_device', '0',
             'ffmpeg','-hide_banner',
             '-i',vid,
             '-vf','subtitles='+sub+':fontsdir=fonts:force_style="FontName=NotoKufiArabic-Bold\,Fontsize=27"',
