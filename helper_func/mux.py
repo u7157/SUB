@@ -106,9 +106,8 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     
     command = [
             'ffmpeg','-hide_banner',
-            '-hwaccel','cuvid',
             '-i',vid,
-#             '-vf','subtitles='+sub+':fontsdir=fonts:force_style="FontName=NotoKufiArabic-Bold\,Fontsize=27"',
+            '-vf','subtitles='+sub+':fontsdir=fonts:force_style="FontName=NotoKufiArabic-Bold\,Fontsize=27", hwupload_cuda',
             '-c:v','h264_nvenc',
             '-preset','fast',
             '-y',out_location
@@ -126,10 +125,6 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
             read_stderr(start,msg, process),
             process.wait(),
         ])
-    
-    # Read the subprocess's standard error output
-    return_code = await process.wait()
-    print(f"Subprocess finished with return code {return_code}")
     
     if process.returncode == 0:
         await msg.edit('Muxing  Completed Successfully!\n\nTime taken : {} seconds'.format(round(start-time.time())))
