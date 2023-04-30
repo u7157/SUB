@@ -109,6 +109,8 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
             '-i',vid,
             '-vf','subtitles='+sub+':fontsdir=fonts:force_style="FontName=NotoKufiArabic-Bold\,Fontsize=27", hwupload_cuda',
             '-c:v','h264_nvenc',
+            '-map','0:v:0',
+            '-map','0:a:0?',
             '-preset','fast',
             '-y',out_location
             ]
