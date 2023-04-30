@@ -130,6 +130,7 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     if process.returncode == 0:
         await msg.edit('Muxing  Completed Successfully!\n\nTime taken : {} seconds'.format(round(start-time.time())))
     else:
+        print(process)
         await msg.edit('An Error occured while Muxing!')
         return False
     
