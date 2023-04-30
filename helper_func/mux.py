@@ -105,7 +105,7 @@ async def hardmux_vid(vid_filename, sub_filename, msg):
     out_location = Config.DOWNLOAD_DIR+'/'+output
     
     command = [
-#             'ffmpeg','-hide_banner',
+            'ffmpeg',
             '-i',vid,
             '-vf','subtitles='+sub+':fontsdir=fonts:force_style="FontName=NotoKufiArabic-Bold\,Fontsize=27"',
             '-c:v','h264_nvenc',
